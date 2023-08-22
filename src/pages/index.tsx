@@ -1,10 +1,18 @@
+import { GetStaticPropsContext } from "next";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
 import { api } from "~/utils/api";
+import { useTranslations } from "next-intl";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
+  const t = useTranslations();
+  const { locale } = useRouter();
+  if (!locale) {
+    return "loading...";
+  }
 
   return (
     <>
@@ -24,7 +32,7 @@ export default function Home() {
               href="https://create.t3.gg/en/usage/first-steps"
               target="_blank"
             >
-              <h3 className="text-2xl font-bold">First Steps →</h3>
+              <h3 className="text-2xl font-bold">{t("Index.firstSteps")} →</h3>
               <div className="text-lg">
                 Just the basics - Everything you need to know to set up your
                 database and authentication.
@@ -76,4 +84,15 @@ function AuthShowcase() {
       </button>
     </div>
   );
+}
+
+export async function getStaticProps(ctx: GetStaticPropsContext) {
+  const locale = ctx.locale ?? "en";
+
+  return {
+    props: {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+      messages: (await import(`../../locales/${locale}.json`)).default,
+    },
+  };
 }
