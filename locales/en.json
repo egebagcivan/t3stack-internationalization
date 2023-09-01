@@ -1,5 +1,9 @@
 {
     "Index": {
         "firstSteps": "First Steps"
+    },
+    "Navbar": {
+        "turkish": "Türkçe",
+        "english": "English"
     }
 }
