@@ -1,3 +1,12 @@
+<div align="center">
+      <a href="https://youtu.be/8xo_jICKXbQ?si=TSyDLySGCsGOCfwJ">
+     <img 
+      src="https://i.ytimg.com/vi/8xo_jICKXbQ/hqdefault.jpg" 
+      alt="Internationalization i18n" 
+      style="width:40%;">
+      </a>
+    </div>
+
 # Create T3 App
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
